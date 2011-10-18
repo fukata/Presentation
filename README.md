@@ -9,5 +9,5 @@ HTML Base Presentation Tool
 4. Execute presen
 
 ## Default Syntax
-- Page Delimiter
+### Page Delimiter
 	>-----
