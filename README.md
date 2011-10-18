@@ -11,10 +11,10 @@ HTML Base Presentation Tool
 	presen [theme]
 
 ## Customize Theme 
-1. Move theme/default theme/hoge
-2. Edit theme/hoge/main.css
-3. Edit theme/hoge/main.js
-4. Edit $theme in presen script
+1. Move themes/default themes/hoge
+2. Edit themes/hoge/main.css
+3. Edit themes/hoge/main.js
+4. Execute `persen hoge` 
 
 ## Syntax
 main.txt
