@@ -1,0 +1,65 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use utf8;
+
+use Cwd;
+use FindBin;
+use File::Copy;
+use Text::Markdown 'markdown';
+
+open(DATAFILE, "< main.txt") or die("error :$!");
+
+my $root = $FindBin::RealBin;
+my $export = Cwd::getcwd();
+my $delimiter = "-----";
+my $html = '';
+my $title = undef;
+my $theme = 'default';
+
+my $count = 0;
+my $buf = undef;
+
+while (my $line = <DATAFILE>){
+	chomp($line);
+	unless ($title) {
+		$title = $line;
+		next;
+	}
+
+	if ($line eq $delimiter) {
+		my $h = markdown($buf);
+		$html .= "\n<div id=\"content-$count\">\n$h</div>";
+		$buf = undef;
+		$count++;
+	} else {
+		$buf .= "\n$line";
+	}
+}
+close (DATAFILE);
+
+# index.html
+print "$export/index.html\n";
+open (OUT, "> $export/index.html") or die("error :$!");
+print OUT << "EOS";
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="main.css">
+<title>$title</title>
+</head>
+<body>
+$html
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
+EOS
+close (OUT);
+
+# css and js
+copy("$root/theme/$theme/main.css", "$export/main.css");
+copy("$root/theme/$theme/jquery.js", "$export/jquery.js");
+copy("$root/theme/$theme/main.js", "$export/main.js");
