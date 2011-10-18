@@ -13,7 +13,7 @@ open( my $datafile, "<", "main.txt");
 
 my $root = $FindBin::RealBin;
 my $export = Cwd::getcwd();
-my $delimiter = "-----";
+my $delimiter = ">-----";
 my $html = '';
 my $title = undef;
 my $theme = 'default';
