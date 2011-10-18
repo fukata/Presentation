@@ -2,13 +2,14 @@
 use strict;
 use warnings;
 use utf8;
+use autodie;
 
 use Cwd;
 use FindBin;
 use File::Copy;
 use Text::Markdown 'markdown';
 
-open(DATAFILE, "< main.txt") or die("error :$!");
+open( my $datafile, "<", "main.txt"); 
 
 my $root = $FindBin::RealBin;
 my $export = Cwd::getcwd();
@@ -20,7 +21,7 @@ my $theme = 'default';
 my $count = 0;
 my $buf = undef;
 
-while (my $line = <DATAFILE>){
+while (my $line = <$datafile>){
 	chomp($line);
 	unless ($title) {
 		$title = $line;
@@ -36,12 +37,11 @@ while (my $line = <DATAFILE>){
 		$buf .= "\n$line";
 	}
 }
-close (DATAFILE);
+close ($datafile);
 
 # index.html
-print "$export/index.html\n";
-open (OUT, "> $export/index.html") or die("error :$!");
-print OUT << "EOS";
+open (my $out, ">", "$export/index.html");
+print $out '' . << "EOS";
 <!doctype html>
 <html>
 <head>
@@ -57,7 +57,7 @@ $html
 </body>
 </html>
 EOS
-close (OUT);
+close ($out);
 
 # css and js
 copy("$root/theme/$theme/main.css", "$export/main.css");
