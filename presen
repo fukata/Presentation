@@ -30,7 +30,7 @@ while (my $line = <$datafile>){
 
 	if ($line eq $delimiter) {
 		my $h = markdown($buf);
-		$html .= "\n<div id=\"content-$count\">\n$h</div>";
+		$html .= "\n<div id=\"content-$count\" class=\"contents\">\n$h</div>";
 		$buf = undef;
 		$count++;
 	} else {
