@@ -19,7 +19,5 @@ Presentation Test
 ## Image with Link
 [![Profile](images/profile.jpg)](http://fukata.org)
 >-----
-## Get Tool
-[Presentation Tool](https://github.com/fukata/Presentation)
->-----
 # Thank you
+<p style="text-align:center;"><a href="https://github.com/fukata/Presentation">Get Tool</a></p>
