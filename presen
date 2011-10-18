@@ -64,6 +64,6 @@ EOS
 close ($out);
 
 # css and js
-copy("$root/theme/$theme/main.css", "$export/main.css");
-copy("$root/theme/$theme/jquery.js", "$export/jquery.js");
-copy("$root/theme/$theme/main.js", "$export/main.js");
+copy("$root/themes/$theme/main.css", "$export/main.css");
+copy("$root/themes/$theme/jquery.js", "$export/jquery.js");
+copy("$root/themes/$theme/main.js", "$export/main.js");
