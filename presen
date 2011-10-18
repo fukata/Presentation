@@ -16,7 +16,7 @@ my $export = Cwd::getcwd();
 my $delimiter = ">-----";
 my $html = '';
 my $title = undef;
-my $theme = 'default';
+my $theme = $ARGV[0] || 'default';
 
 my $count = 0;
 my $buf = undef;

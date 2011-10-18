@@ -7,6 +7,7 @@ HTML Base Presentation Tool
 2. Write markdown text to main.txt
 3. Change directory it
 4. Execute presen
+	presen [theme]
 
 ## Customize Theme 
 1. Move theme/default theme/hoge
