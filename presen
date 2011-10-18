@@ -18,8 +18,13 @@ my $html = '';
 my $title = undef;
 my $theme = $ARGV[0] || 'default';
 
-my $count = 0;
 my $buf = undef;
+
+sub to_html {
+	my $buf = shift;
+	my $h = markdown($buf);
+	return "\n<div class=\"contents\">\n$h</div>";
+}
 
 while (my $line = <$datafile>){
 	chomp($line);
@@ -29,14 +34,13 @@ while (my $line = <$datafile>){
 	}
 
 	if ($line eq $delimiter) {
-		my $h = markdown($buf);
-		$html .= "\n<div id=\"content-$count\" class=\"contents\">\n$h</div>";
+		$html .= to_html($buf);
 		$buf = undef;
-		$count++;
 	} else {
 		$buf .= "\n$line";
 	}
 }
+$html .= to_html($buf) if $buf;
 close ($datafile);
 
 # index.html

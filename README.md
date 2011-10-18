@@ -16,6 +16,14 @@ HTML Base Presentation Tool
 3. Edit theme/hoge/main.js
 4. Edit $theme in presen script
 
-## Default Syntax
+## Syntax
+main.txt
+	TITLE
+	1 page conents
+	>-----
+	2 page conents
+	>-----
+	3 page contents
+	...
 ### Page Delimiter
 	>-----
