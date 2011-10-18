@@ -18,6 +18,7 @@ HTML Base Presentation Tool
 
 ## Syntax
 main.txt
+
 	TITLE
 	1 page conents
 	>-----
