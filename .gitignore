@@ -1,1 +1,5 @@
 *.swp
+tests/index.html
+tests/jquery.js
+tests/main.css
+tests/main.js
