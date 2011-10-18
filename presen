@@ -9,7 +9,7 @@ use FindBin;
 use File::Copy;
 use Text::Markdown 'markdown';
 
-open( my $datafile, "<", "main.txt"); 
+open(my $datafile, "<", "main.txt"); 
 
 my $root = $FindBin::RealBin;
 my $export = Cwd::getcwd();
@@ -18,14 +18,13 @@ my $html = '';
 my $title = undef;
 my $theme = $ARGV[0] || 'default';
 
-my $buf = undef;
-
 sub to_html {
 	my $buf = shift;
 	my $h = markdown($buf);
 	return "\n<div class=\"contents\">\n$h</div>";
 }
 
+my $buf = undef;
 while (my $line = <$datafile>){
 	chomp($line);
 	unless ($title) {
@@ -41,10 +40,10 @@ while (my $line = <$datafile>){
 	}
 }
 $html .= to_html($buf) if $buf;
-close ($datafile);
+close($datafile);
 
 # index.html
-open (my $out, ">", "$export/index.html");
+open(my $out, ">", "$export/index.html");
 print $out '' . << "EOS";
 <!doctype html>
 <html>
@@ -61,7 +60,7 @@ $html
 </body>
 </html>
 EOS
-close ($out);
+close($out);
 
 # css and js
 copy("$root/themes/$theme/main.css", "$export/main.css");
