@@ -8,6 +8,7 @@ use Cwd;
 use FindBin;
 use File::Copy;
 use Text::Markdown 'markdown';
+use Template;
 
 open(my $datafile, "<", "main.txt"); 
 
@@ -22,6 +23,16 @@ sub to_html {
 	my $buf = shift;
 	my $h = markdown($buf);
 	return "\n<div class=\"contents\">\n$h</div>";
+}
+
+sub load_index {
+	my ($theme, $title, $html) = @_;
+	my $tt = Template->new({
+		INCLUDE_PATH => "$root/themes/",
+	});
+	my $result = '';
+	$tt->process("$theme/index.tt", {title=>$title, html=>$html}, \$result);
+	return $result;
 }
 
 my $buf = undef;
@@ -44,22 +55,7 @@ close($datafile);
 
 # index.html
 open(my $out, ">", "$export/index.html");
-print $out '' . << "EOS";
-<!doctype html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="main.css">
-<title>$title</title>
-</head>
-<body>
-$html
-
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="main.js"></script>
-</body>
-</html>
-EOS
+print $out load_index($theme, $title, $html);
 close($out);
 
 # css and js
