@@ -30,8 +30,7 @@ $(function(){
 
 	function move(p) {
 		if (isNaN(p) || p < 0 || $('div.contents').size() <= p) p = 0;
-		$('div.contents').hide();
-		$('div.contents').eq(p).show();
+		$('div.contents').hide().eq(p).show();
 		location.hash = p;
 		return p;
 	}
