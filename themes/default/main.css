@@ -30,6 +30,7 @@ div.navi {
 	top: 0px;
 	height: 100%;
 	width: 25%;
+	z-index: -1;
 }
 div#left-navi {
 	left: 0px;
