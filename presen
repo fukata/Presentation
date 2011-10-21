@@ -44,6 +44,7 @@ while (my $line = <$datafile>){
 	}
 
 	if ($line eq $delimiter) {
+		next unless $buf;
 		$html .= to_html($buf);
 		$buf = undef;
 	} else {
