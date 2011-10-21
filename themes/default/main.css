@@ -24,3 +24,23 @@ h2 {
 li {
 	margin-left: 30px;
 }
+
+div.navi {
+	position: absolute;
+	top: 0px;
+	height: 100%;
+	width: 25%;
+}
+div#left-navi {
+	left: 0px;
+	cursor: w-resize;
+}
+div#right-navi {
+	right: 0px;
+	cursor: e-resize;
+}
+div:hover.navi {
+	background-color: #ccc;
+	opacity: 0.2;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Enabled=1,Style=0,Opacity=20);
+}
