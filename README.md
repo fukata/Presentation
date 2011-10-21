@@ -28,3 +28,9 @@ main.txt
 	...
 ### Page Delimiter
 	>-----
+
+## Tips
+### Auto Build
+.vimrc add
+	" Presentation
+	autocmd BufWritePost main.txt silent exec "!presen [theme]"
