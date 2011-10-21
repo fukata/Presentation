@@ -34,4 +34,11 @@ $(function(){
 		location.hash = p;
 		return p;
 	}
+
+	$('#left-navi').click(function(){
+		page = prev(page);
+	});
+	$('#right-navi').click(function(){
+		page = next(page);
+	});
 });
