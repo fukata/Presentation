@@ -20,6 +20,7 @@ HTML Base Presentation Tool
 main.txt
 
 	TITLE
+	>-----
 	1 page conents
 	>-----
 	2 page conents
