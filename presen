@@ -6,7 +6,7 @@ use autodie;
 
 use Cwd;
 use FindBin;
-use File::Copy;
+use File::Copy::Recursive qw/rcopy/;
 use Text::Markdown 'markdown';
 use Template;
 
@@ -60,6 +60,5 @@ print $out load_index($theme, $title, $html);
 close($out);
 
 # css and js
-copy("$root/themes/$theme/main.css", "$export/main.css");
-copy("$root/themes/$theme/jquery.js", "$export/jquery.js");
-copy("$root/themes/$theme/main.js", "$export/main.js");
+rcopy("$root/themes/$theme/assets", "$export/assets");
+
