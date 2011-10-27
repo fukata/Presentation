@@ -12,9 +12,9 @@ HTML Base Presentation Tool
 
 ## Customize Theme 
 1. Move themes/default themes/hoge
-2. Edit themes/hoge/main.css
-3. Edit themes/hoge/main.js
-4. Execute `persen hoge` 
+2. Edit themes/hoge/assets/css/main.css
+3. Edit themes/hoge/assets/js/main.js
+4. Execute `presen hoge` 
 
 ## Syntax
 main.txt
