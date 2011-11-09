@@ -8,7 +8,7 @@ HTML Base Presentation Tool
 3. Change directory it
 4. Execute presen
 
-	presen [theme]
+		presen [theme]
 
 ## Customize Theme 
 1. Move themes/default themes/hoge
