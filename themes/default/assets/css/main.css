@@ -45,3 +45,15 @@ div:hover.navi {
 	opacity: 0.2;
 	filter:progid:DXImageTransform.Microsoft.Alpha(Enabled=1,Style=0,Opacity=20);
 }
+
+pre, 
+code {
+    font-size: 32px;
+    overflow: auto;
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -pre-wrap;     /* Opera 4-6 */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
