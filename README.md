@@ -16,6 +16,14 @@ HTML Base Presentation Tool
 3. Edit themes/hoge/assets/js/main.js
 4. Execute `presen hoge` 
 
+## Config each documents
+create `config.json` in document directory.
+
+	{
+		"theme": "blue"
+	}
+
+
 ## Syntax
 main.txt
 
