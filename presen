@@ -4,20 +4,34 @@ use warnings;
 use utf8;
 use autodie;
 
+use Data::Dumper;
 use Cwd;
 use FindBin;
 use File::Copy::Recursive qw/rcopy/;
 use Text::Markdown 'markdown';
 use Template;
+use JSON::XS;
 
 open(my $datafile, "<", "main.txt"); 
 
 my $root = $FindBin::RealBin;
 my $export = Cwd::getcwd();
-my $delimiter = ">-----";
+my $config = {
+	delimiter => ">-----",
+	theme => "default",
+};
 my $html = '';
 my $title = undef;
-my $theme = $ARGV[0] || 'default';
+$config->{theme} = $ARGV[0] unless $ARGV[0];
+
+sub load_config {
+	if (-f "$export/config.json") {
+		open(my $configfile, "<", "config.json"); 
+		local $/ = undef;
+		my $_config = JSON::XS->new->utf8->decode(<$configfile>);
+		$config = {%$config, %$_config};
+	}
+}
 
 sub to_html {
 	my $buf = shift;
@@ -35,6 +49,8 @@ sub load_index {
 	return $result;
 }
 
+load_config();
+
 my $buf = undef;
 while (my $line = <$datafile>){
 	chomp($line);
@@ -43,7 +59,7 @@ while (my $line = <$datafile>){
 		next;
 	}
 
-	if ($line eq $delimiter) {
+	if ($line eq $config->{delimiter}) {
 		next unless $buf;
 		$html .= to_html($buf);
 		$buf = undef;
@@ -56,9 +72,9 @@ close($datafile);
 
 # index.html
 open(my $out, ">", "$export/index.html");
-print $out load_index($theme, $title, $html);
+print $out load_index($config->{theme}, $title, $html);
 close($out);
 
 # css and js
-rcopy("$root/themes/$theme/assets", "$export/assets");
+rcopy("$root/themes/$config->{theme}/assets", "$export/assets");
 
