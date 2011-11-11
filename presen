@@ -30,6 +30,7 @@ sub load_config {
 		local $/ = undef;
 		my $_config = JSON::XS->new->utf8->decode(<$configfile>);
 		$config = {%$config, %$_config};
+		close($configfile);
 	}
 }
 
@@ -45,7 +46,7 @@ sub load_index {
 		INCLUDE_PATH => "$root/themes/",
 	});
 	my $result = '';
-	$tt->process("$theme/index.tt", {title=>$title, html=>$html}, \$result);
+	$tt->process("$theme/index.tt", {title=>$title, html=>$html, config=>$config}, \$result);
 	return $result;
 }
 
