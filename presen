@@ -22,7 +22,7 @@ my $config = {
 };
 my $html = '';
 my $title = undef;
-$config->{theme} = $ARGV[0] unless $ARGV[0];
+$config->{theme} = $ARGV[0] if $ARGV[0];
 
 sub load_config {
 	if (-f "$export/config.json") {
