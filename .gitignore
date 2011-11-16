@@ -1,5 +1,3 @@
 *.swp
-tests/index.html
-tests/jquery.js
-tests/main.css
-tests/main.js
+tests/*
+!tests/main.txt
