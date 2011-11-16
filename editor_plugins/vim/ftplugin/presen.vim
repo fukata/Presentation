@@ -18,3 +18,6 @@ let b:undo_ftplugin .= "|setl cms< com< fo<"
  
 " auto update
 autocmd BufWritePost <buffer> silent exec "!presen"
+
+"open browser
+noremap <buffer> <F5> :!gnome-open %:p:h/index.html > /dev/null 2>&1<CR>
