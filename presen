@@ -77,5 +77,6 @@ print $out load_index($config->{theme}, $title, $html);
 close($out);
 
 # css and js
+rcopy("$root/assets", "$export/assets");
 rcopy("$root/themes/$config->{theme}/assets", "$export/assets");
 

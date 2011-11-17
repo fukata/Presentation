@@ -30,3 +30,5 @@ Presentation Test
 >-----
 # Thank you
 <p style="text-align:center;"><a href="https://github.com/fukata/Presentation">Get Tool</a></p>
+
+<!-- vim: set filetype=presen syntax=markdown : -->

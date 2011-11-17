@@ -2,18 +2,20 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/js/highlight/styles/default.css">
 <link rel="stylesheet" href="assets/js/highlight/styles/sunburst.css">
 <title>[% title %]</title>
 </head>
 <body>
 [% html %]
 
-<script type="text/javascript" src="assets/js/jquery.js"></script>
-<script type="text/javascript" src="assets/js/highlight/highlight.pack.js" charset="utf-8"></script>
-<script type="text/javascript" src="assets/js/main.js"></script>
 <div id="left-navi" class="navi"></div>
 <div id="right-navi" class="navi"></div>
+
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/highlight/highlight.pack.js" charset="utf-8"></script>
+<script type="text/javascript" src="assets/js/presentation.js" charset="utf-8"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>
