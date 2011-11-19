@@ -55,5 +55,6 @@ code {
     white-space: -o-pre-wrap;   /* Opera 7 */
     white-space: pre-wrap;
     word-break: break-all;
+	margin: 0 20px;
 }
 

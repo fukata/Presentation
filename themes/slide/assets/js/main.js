@@ -1,7 +1,7 @@
 $(function(){
 
 	Presentaiton.prototype.move = function(p) {
-		if (isNaN(p) || p < 0 || this.totalPage() <= p) {
+		if (isNaN(p) || p < 0 || this.totalPage() < p) {
 			p = 1;
 		}
 		this.updatePager(p);
@@ -10,6 +10,12 @@ $(function(){
 		this.page = p;
 		$('a.xtrig').attr('href', '#' + p).trigger('click');
 		return p;
+	}
+
+	Presentaiton.prototype.moveNext = function() {
+		if (this.page < this.totalPage()) {
+			this.page = this.move(this.page + 1);
+		}
 	}
 
 	Presentaiton.prototype.movePrev = function() {
