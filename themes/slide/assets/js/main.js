@@ -1,7 +1,6 @@
 $(function(){
 
 	Presentaiton.prototype.move = function(p) {
-		console.log("move: %s", p);
 		if (isNaN(p) || p < 0 || this.totalPage() <= p) {
 			p = 1;
 		}
@@ -22,9 +21,8 @@ $(function(){
 	Presentaiton.prototype.updateWindowSize = function() {
 		var ww = $(window).width();
 		var wh = $(window).height();
-		console.log(this);
 		var $content = $('div.' + this.options.contentsClass).eq(this.page - 1);
-		var y = $content.position() !== null ? $content.position().top : 0;
+		var y = ($content !== null && $content.position() !== null) ? $content.position().top : 0;
 		if ($('#footer')) {
 			var fh = $('#footer').outerHeight();
 			$content.height(wh - fh - y);
@@ -39,15 +37,20 @@ $(function(){
 		this.initParams();
 		this.initMovePage();
 		this.initResize();
-		//this.initTimer();
+		this.initTimer();
 		this.initCodeHighLight();
-		//this.move(this.page);
+		this.move(this.page);
 		this.updateWindowSize();
 		$('#contents-container').codaSlider({
 			autoHeight: false,
 			dynamicArrows: false,
 			dynamicTabs: false
 		});
+	}
+
+	Presentaiton.prototype.initParams = function() {
+		console.log("initParams");
+		this.page = parseInt(location.hash.replace('#',''), 10) || 1;
 	}
 
 	var presen = new Presentaiton({

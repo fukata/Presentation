@@ -8,7 +8,7 @@ $(function(){
 	// Remove the coda-slider-no-js class from the body
 	$("body").removeClass("coda-slider-no-js");
 	// Preloader
-	$(".coda-slider").children('.panel').hide().end().prepend('<p class="loading">Loading...<br /><img src="images/ajax-loader.gif" alt="loading..." /></p>');
+	$(".coda-slider").children('.panel').hide().end().prepend('<p class="loading">Loading...<br /><img src="assets/js/coda-slider/images/ajax-loader.gif" alt="loading..." /></p>');
 });
 
 var sliderCount = 1;
