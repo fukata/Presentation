@@ -19,25 +19,38 @@ my $export = Cwd::getcwd();
 my $config = {
 	delimiter => ">-----",
 	theme => "default",
+	contents_class => "contents",
 };
 my $html = '';
 my $title = undef;
 $config->{theme} = $ARGV[0] if $ARGV[0];
 
 sub load_config {
+	my $user_config = undef;
+	my $theme_config = undef;
 	if (-f "$export/config.json") {
-		open(my $configfile, "<", "config.json"); 
+		open(my $configfile, "<", "$export/config.json"); 
 		local $/ = undef;
-		my $_config = JSON::XS->new->utf8->decode(<$configfile>);
-		$config = {%$config, %$_config};
+		my $user_config = JSON::XS->new->utf8->decode(<$configfile>);
+		$config = {%$config, %$user_config};
 		close($configfile);
 	}
+
+	if (-f "$root/themes/$config->{theme}/config.json") {
+		open(my $configfile, "<", "$root/themes/$config->{theme}/config.json"); 
+		local $/ = undef;
+		my $theme_config = JSON::XS->new->utf8->decode(<$configfile>);
+		$config = {%$config, %$theme_config};
+		close($configfile);
+	}
+	
+	$config = {%$config, %$user_config} if $user_config;
 }
 
 sub to_html {
 	my $buf = shift;
 	my $h = markdown($buf);
-	return "\n<div class=\"contents\">\n$h</div>";
+	return "\n<div class=\"$config->{contents_class}\">\n$h</div>";
 }
 
 sub load_index {
