@@ -3,10 +3,9 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/js/highlight/styles/sunburst.css">
 <link rel="stylesheet" href="assets/js/coda-slider/stylesheets/coda-slider-2.0.css">
-<link rel="stylesheet" href="assets/css/fixed_coda-slider.css">
+<link rel="stylesheet" href="assets/css/main.css">
 <title>[% title %]</title>
 </head>
 <body>

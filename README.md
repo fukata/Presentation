@@ -44,3 +44,12 @@ main.txt
 
 	" Presentation
 	autocmd BufWritePost main.txt silent exec "!presen [theme]"
+
+## Auto Build vim Plugin
+copy vim plugin `~/.vim/`
+
+	cp -R editor_plugins/vim ~/.vim/
+
+and add line `main.txt`
+
+	<!-- vim: set filetype=presen syntax=markdown : -->

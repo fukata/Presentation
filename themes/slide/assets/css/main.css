@@ -4,8 +4,15 @@
 	font-size: 24px;
 }
 
+body {
+	padding: 0px;
+}
+
+.coda-slider {
+	background-color: #fff;
+}
+
 div.contents {
-	/*display: none;*/
 }
 
 h1 {
