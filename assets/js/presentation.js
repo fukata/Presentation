@@ -30,6 +30,12 @@
 			ev.stopPropagation();
 			var code = ev.keyCode;
 			switch (code) {
+				case 36: // Home
+					self.move(0);
+					break;
+				case 35: // End
+					self.move(self.totalPage() - 1);
+					break;
 				case 38: // up
 				case 37: // left
 				case 75: // k
@@ -76,11 +82,9 @@
 		var $content = $('div.' + this.options.contentsClass + ':visible');
 		var y = $content.position() !== null ? $content.position().top : 0;
 		if ($('#footer').size() > 0) {
-			console.log('have footer');
 			var fh = $('#footer').outerHeight();
 			$content.height(wh - fh - y);
 		} else {
-			console.log('does not have footer');
 			$content.height(wh - y);
 		}
 	}
@@ -125,8 +129,10 @@
 	}
 
 	Presentaiton.prototype.move = function(p) {
-		if (isNaN(p) || p < 0 || this.totalPage() <= p) {
+		if (isNaN(p) || p < 0) {
 			p = 0;
+		} else if (p > this.totalPage()) {
+			p = this.totalPage() - 1;
 		}
 		$('div.' + this.options.contentsClass).hide().eq(p).show();
 		this.updatePager(p);
