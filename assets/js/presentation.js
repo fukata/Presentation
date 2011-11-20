@@ -54,7 +54,7 @@
 
 	Presentaiton.prototype.initTimer = function() {
 		console.log("initTimer");
-		if ($('#time')) {
+		if ($('#time').size() > 0) {
 			var self = this;
 			this.startDate = new Date();
 			this.timer = setInterval(function(){self.updateTime();}, 500);
@@ -75,10 +75,12 @@
 		var wh = $(window).height();
 		var $content = $('div.' + this.options.contentsClass + ':visible');
 		var y = $content.position() !== null ? $content.position().top : 0;
-		if ($('#footer')) {
+		if ($('#footer').size() > 0) {
+			console.log('have footer');
 			var fh = $('#footer').outerHeight();
 			$content.height(wh - fh - y);
 		} else {
+			console.log('does not have footer');
 			$content.height(wh - y);
 		}
 	}
