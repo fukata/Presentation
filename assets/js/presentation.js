@@ -29,6 +29,7 @@
 		$(window).keyup(function(ev){
 			ev.stopPropagation();
 			var code = ev.keyCode;
+			console.log('code: %s', code);
 			switch (code) {
 				case 36: // Home
 					self.move(0);
@@ -36,11 +37,13 @@
 				case 35: // End
 					self.move(self.totalPage() - 1);
 					break;
+				case 33: // PgUp
 				case 38: // up
 				case 37: // left
 				case 75: // k
 					self.movePrev();
 					break;
+				case 34: // PgDn 
 				case 40: // down 
 				case 39: // right 
 				case 74: // j
