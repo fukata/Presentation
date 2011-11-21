@@ -97,8 +97,8 @@
 		var self = this;
 		var pager = '<span>Page: ' + this.addZero(p,2) + '/' + this.addZero(this.totalPage() - 1, 2) + '</span>';
 		$('#pager').html(pager);
-		if (this.hasPage(p - 1)) $('#pager').append(' ').append($(document.createElement('a')).attr('href','javascript:void(0)').text('Prev').click(function(){self.prev(p);}));
-		if (this.hasPage(p + 1)) $('#pager').append(' ').append($(document.createElement('a')).attr('href','javascript:void(0)').text('Next').click(function(){self.next(p);}));
+		if (this.hasPage(p - 1)) $('#pager').append(' ').append($(document.createElement('a')).attr('href','javascript:void(0)').text('Prev').click(function(){self.movePrev(p);}));
+		if (this.hasPage(p + 1)) $('#pager').append(' ').append($(document.createElement('a')).attr('href','javascript:void(0)').text('Next').click(function(){self.moveNext(p);}));
 	}
 
 	Presentaiton.prototype.updateTime = function() {
