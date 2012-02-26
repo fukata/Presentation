@@ -15,6 +15,7 @@ HTML Base Presentation Tool
 2. Edit themes/hoge/assets/css/main.css
 3. Edit themes/hoge/assets/js/main.js
 4. Execute `presen hoge` 
+5. Generate PDF `presen2pdf [page] [url] [output name]` 
 
 ## Config each documents
 create `config.json` in document directory.
@@ -23,6 +24,13 @@ create `config.json` in document directory.
 		"theme": "blue"
 	}
 
+## Config each PDF
+create `pdf.json` in document directory.
+
+	{
+		"name": "out.pdf",
+		"url": "http://localhost/presen/hoge/"
+	}
 
 ## Syntax
 main.txt
