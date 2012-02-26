@@ -1,0 +1,49 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use utf8;
+use autodie;
+
+use FindBin;
+use Cwd;
+use File::Temp qw/tempdir/;
+use JSON::XS;
+
+my $root = $FindBin::RealBin;
+my $export = Cwd::getcwd();
+my $config = {
+	url => undef,
+	name => 'out.pdf',
+	page => 0,
+	tmpdir => undef,
+};
+
+$config->{page} = $ARGV[0] if $ARGV[0]; 
+$config->{url} = $ARGV[1] if $ARGV[1]; 
+$config->{name} = $ARGV[2] if $ARGV[2]; 
+$config->{tmpdir} = tempdir( CLEANUP => 1 );
+#$config->{tmpdir} = '/tmp/presen'; 
+
+sub load_config {
+	my $pdf_config = undef;
+	if (-f "$export/config.json") {
+		open(my $configfile, "<", "$export/pdf.json"); 
+		local $/ = undef;
+		my $pdf_config = JSON::XS->new->utf8->decode(<$configfile>);
+		$config = {%$config, %$pdf_config};
+		close($configfile);
+	}
+}
+
+load_config();
+
+my $pdf_args = "";
+for my $p ( 0 .. $config->{page} ) {
+	my $png = "$config->{tmpdir}/page-$p.png";
+	my $pdf = "$config->{tmpdir}/page-$p.pdf";
+	`phantomjs $root/presen2png.coffee "$config->{url}#$p" $png`;
+	`sam2p $png $pdf >> /dev/null`;
+	$pdf_args .= " $pdf";
+}
+
+`pdftk $pdf_args cat output $export/$config->{name}`;
