@@ -38,7 +38,7 @@ sub load_config {
 load_config();
 
 my $pdf_args = "";
-for my $p ( 0 .. $config->{page} ) {
+for my $p ( 0 .. $config->{page}-1 ) {
 	my $png = "$config->{tmpdir}/page-$p.png";
 	my $pdf = "$config->{tmpdir}/page-$p.pdf";
 	`phantomjs $root/presen2png.coffee "$config->{url}#$p" $png`;
