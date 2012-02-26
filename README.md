@@ -10,6 +10,10 @@ HTML Base Presentation Tool
 
 		presen [theme]
 
+5. Generate PDF 
+
+		presen2pdf presen2pdf [page] [url] [output name]
+
 ## Customize Theme 
 1. Move themes/default themes/hoge
 2. Edit themes/hoge/assets/css/main.css
