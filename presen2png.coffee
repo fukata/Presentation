@@ -1,10 +1,10 @@
 page = new WebPage()
 address = phantom.args[0]
 output = phantom.args[1] || 'out.png'
-width = phantom.args[2] || 1440
-height = phantom.args[3] || 900
-paperwidth = phantom.args[4] || '48.77cm'
-paperheight = phantom.args[5] || '17.43cm'
+width = phantom.args[2] || 1024 
+height = phantom.args[3] || 768 
+paperwidth = phantom.args[4] || '28.00cm'
+paperheight = phantom.args[5] || '21.00cm'
 
 page.viewportSize = { width: width, height: height }
 page.paperSize = { width: paperwidth, height: paperheight, border: '0px' }

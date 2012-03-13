@@ -26,7 +26,7 @@ $config->{tmpdir} = tempdir( CLEANUP => 1 );
 
 sub load_config {
 	my $pdf_config = undef;
-	if (-f "$export/config.json") {
+	if (-f "$export/pdf.json") {
 		open(my $configfile, "<", "$export/pdf.json"); 
 		local $/ = undef;
 		my $pdf_config = JSON::XS->new->utf8->decode(<$configfile>);
